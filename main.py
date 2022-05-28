@@ -11,7 +11,6 @@ YELLOW = (255, 255, 0)
 LIGHT_YELLOW = (255, 255, 204)
 GREEN = (0, 128, 0)
 RED = (190, 0, 0)
-GREY = (80, 80, 80)
 BLACK = (0, 0, 0)
 PINK = (255, 128, 128)
 LIGHT_BROWN = (150, 150, 0)
@@ -56,7 +55,6 @@ class Planet:
 
             pygame.draw.lines(win, self.color, False, updated_points, 2)
 
-
         # displays distance from sun in km but is visually noisy
         # if not self.sun:
         #     distance_text = FONT.render(f"{round(self.distance_to_sun/1000, 1)}km", 1, WHITE)
@@ -99,6 +97,7 @@ class Planet:
         self.y += self.y_vel * self.TIMESTEP
         self.orbit.append((self.x, self.y))
 
+
 def main():
     run = True
     clock = pygame.time.Clock()
@@ -127,7 +126,7 @@ def main():
     uranus = Planet("Uranus", -2867e9, 0, 6.4, LIGHT_BLUE, 86.8e24)
     uranus.y_vel = 6800
 
-    neptune = Planet("Neptune", -4515e9, 0, 6.2, DARK_BLUE, 102e24,)
+    neptune = Planet("Neptune", -4515e9, 0, 6.2, DARK_BLUE, 102e24)
     neptune.y_vel = 5400
 
     planets = [sun, mercury, venus, earth, mars, jupiter, saturn, uranus, neptune]
