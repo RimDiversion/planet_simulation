@@ -8,10 +8,16 @@ pygame.display.set_caption("Planet Simulation")
 
 WHITE = (255, 255, 255)
 YELLOW = (255, 255, 0)
-BLUE = (0, 0, 255)
-RED = (255, 0, 0)
+LIGHT_YELLOW = (255, 255, 204)
+GREEN = (0, 128, 0)
+RED = (190, 0, 0)
 GREY = (80, 80, 80)
 BLACK = (0, 0, 0)
+PINK = (255, 128, 128)
+LIGHT_BROWN = (150, 150, 0)
+DARK_BROWN = (51, 51, 0)
+DARK_BLUE = (50, 75, 225)
+LIGHT_BLUE = (204, 255, 255)
 
 FONT = pygame.font.SysFont("arial", 8)
 
@@ -97,31 +103,31 @@ def main():
     run = True
     clock = pygame.time.Clock()
 
-    sun = Planet("Sun", 0, 0, 14, YELLOW, 1.98892e30 )
+    sun = Planet("Sun", 0, 0, 1.4, YELLOW, 1.988e30 )
     sun.sun = True
 
-    mercury = Planet("Mercury", -0.387 * Planet.AU, 0, .8, GREY, .33e24)
+    mercury = Planet("Mercury", -57.9e9, 0, .8, DARK_BROWN, .33e24)
     mercury.y_vel = 47400
 
-    venus = Planet("Venus", -0.723 * Planet.AU, 0, 1.4, WHITE, 4.8685e24)
+    venus = Planet("Venus", -108.2e9, 0, 1.4, PINK, 4.8685e24)
     venus.y_vel = 35050
 
-    earth = Planet("Earth", -1 * Planet.AU, 0, 1.6, BLUE, 5.9742e24)
+    earth = Planet("Earth", -149.6e9, 0, 1.6, GREEN, 5.9742e24)
     earth.y_vel = 29783
 
-    mars = Planet("Mars", -1.524 * Planet.AU, 0, 1.2, RED, 6.39e23)
+    mars = Planet("Mars", -228e9, 0, 1.2, RED, .642e24)
     mars.y_vel = 24077
 
-    jupiter = Planet("Jupiter", -778.5e9, 0, 16.5, WHITE, 1898e24)
+    jupiter = Planet("Jupiter", -778.5e9, 0, 16.5, LIGHT_BROWN, 1898e24)
     jupiter.y_vel = 13000
 
-    saturn = Planet("Saturn", -1432e9, 0, 14.0, WHITE, 568e24)
+    saturn = Planet("Saturn", -1432e9, 0, 14.0, LIGHT_YELLOW, 568e24)
     saturn.y_vel = 9700
 
-    uranus = Planet("Uranus", -2867e9, 0, 6.4, WHITE, 86.8e24)
+    uranus = Planet("Uranus", -2867e9, 0, 6.4, LIGHT_BLUE, 86.8e24)
     uranus.y_vel = 6800
 
-    neptune = Planet("Neptune", -4515e9, 0, 6.2, WHITE, 102e24,)
+    neptune = Planet("Neptune", -4515e9, 0, 6.2, DARK_BLUE, 102e24,)
     neptune.y_vel = 5400
 
     planets = [sun, mercury, venus, earth, mars, jupiter, saturn, uranus, neptune]
