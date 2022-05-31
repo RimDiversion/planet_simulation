@@ -33,14 +33,16 @@ class Planet:
         self.mass = mass
 
         self.orbit = []
+        self.year = 0
         self.sun = False
         self.distance_to_sun = 0
+        self.pop = False
 
         self.x_vel = 0
         self.y_vel = orbital_velocity
 
     def draw(self, win):
-        font = pygame.font.SysFont("arial", 22)
+        font = pygame.font.SysFont("arial", 16)
         x = self.x * scale + WIDTH / 2
         y = self.y * scale + HEIGHT / 2
 
@@ -55,8 +57,8 @@ class Planet:
             pygame.draw.lines(win, self.color, False, updated_points, 2)
 
         if not self.sun:
-            name_text = font.render(f"{self.name}", 1, WHITE)
-            win.blit(name_text, (x - name_text.get_width()/2, y - name_text.get_width()/2))
+            name_text = font.render(f"{self.name} Y: {self.year}", 1, WHITE)
+            win.blit(name_text, (x - name_text.get_width()/2, y - name_text.get_height()/2))
 
         pygame.draw.circle(win, self.color, (x, y), self.radius*scale*50000)
 
@@ -89,7 +91,17 @@ class Planet:
         self.y_vel += total_fy / self.mass * TIMESTEP
 
         self.x += self.x_vel * TIMESTEP
-        self.y += self.y_vel * TIMESTEP
+        if self.y < 0:
+            self.y += self.y_vel * TIMESTEP
+            if self.y > 0:
+                self.year += 1
+                self.pop = True
+        else:
+            self.y += self.y_vel * TIMESTEP
+        
+        if self.pop:
+            self.orbit.pop(0)
+
         self.orbit.append((self.x, self.y))
 
 
